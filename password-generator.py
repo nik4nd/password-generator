@@ -8,7 +8,7 @@ while num <= 0:
 length = int(input('Enter the length of passwords: '))
 while length < 8 or length > 127:
     print('\n| The minimum password length is 8 characters'
-          ' and the maximum is 127. |\n')
+          ' and the maximum is 127 |\n')
     length = int(input('Enter the length of passwords: '))
 
 chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
@@ -20,11 +20,9 @@ while len(all_passwords) < num:
     all_passwords.add(password)
 all_passwords = list(all_passwords)
 
-output = open('passwords.txt', 'w')
-for i in range(len(all_passwords)):
-    output.write(f'{i+1}) {all_passwords[i]}' + '\n')
-output.close()
+with open('passwords.txt', 'w') as output:
+    for i in range(len(all_passwords)):
+        output.write(f'{i+1}) {all_passwords[i]}' + '\n')
 
-output = open('passwords.txt')
-print('\n' + output.read())
-output.close()
+with open('passwords.txt') as output:
+    print('\n' + output.read())
